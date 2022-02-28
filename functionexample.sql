@@ -1,4 +1,4 @@
-#Built in Function Examples
+#Built in Function Examples using database_sample db
 
 #String Functions
 Select FirstName, Length(FirstName) from people;

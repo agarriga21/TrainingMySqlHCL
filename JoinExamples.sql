@@ -1,4 +1,4 @@
-#Join Examples
+#Simple Join Examples using database_sample
 
 #Left Join
 SELECT * FROM People

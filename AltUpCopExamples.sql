@@ -1,4 +1,4 @@
-#Alter, Update, Copy Examples
+#Alter, Update, Copy Examples using database_sample
 
 ALTER TABLE People
 ADD Country CHAR(2);

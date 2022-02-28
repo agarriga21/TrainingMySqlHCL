@@ -1,4 +1,4 @@
-#Creating the Database
+#Creating the Database database_sample
 CREATE DATABASE database_sample;
 
 #Table Creating

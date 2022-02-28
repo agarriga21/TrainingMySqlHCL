@@ -1,3 +1,5 @@
+#basic queries using database_sample
+
 #Select Examples
 Select * from people;
 Select FirstName from people;

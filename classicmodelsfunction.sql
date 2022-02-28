@@ -1,4 +1,4 @@
-#Custom Function Classicmodels
+#Custom Function using Classicmodels
 DELIMITER $$
 
 CREATE FUNCTION CustomerLevel(

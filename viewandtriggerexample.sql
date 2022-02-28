@@ -1,4 +1,4 @@
-#Views and Triggers
+#Views and Triggers using database_sample
 
 #View Example
 DROP VIEW custom_people_view;
@@ -12,6 +12,9 @@ CASE
 END as "Balance Description"
 FROM people
 WHERE Balance and DOB and FirstName IS NOT NULL;
+
+Select * From custom_people_view;
+
 
 #Trigger Example
 

@@ -1,3 +1,4 @@
+#trigger example using classicmodels
 CREATE TABLE employees_audit (
     id INT AUTO_INCREMENT PRIMARY KEY,
     employeeNumber INT NOT NULL,
