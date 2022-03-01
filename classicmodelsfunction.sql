@@ -22,9 +22,11 @@ BEGIN
 END$$
 DELIMITER ;
 
+#see if function is in db
 SHOW FUNCTION STATUS 
 WHERE db = 'classicmodels';
 
+#Testing new function
 SELECT 
     customerName, 
     CustomerLevel(creditLimit)

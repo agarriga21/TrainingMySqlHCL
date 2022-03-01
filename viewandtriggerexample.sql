@@ -13,11 +13,13 @@ END as "Balance Description"
 FROM people
 WHERE Balance and DOB and FirstName IS NOT NULL;
 
+#view view
 Select * From custom_people_view;
 
 
 #Trigger Example
 
+#testing table
 CREATE TABLE new_person_join (
     id INT AUTO_INCREMENT PRIMARY KEY,
     PersonID INT NOT NULL,
@@ -28,6 +30,7 @@ CREATE TABLE new_person_join (
 );
 Select * From new_person_join;
 
+#new trigger
 CREATE TRIGGER after_people_insert 
     AFTER INSERT ON people
     FOR EACH ROW 
@@ -38,8 +41,12 @@ CREATE TRIGGER after_people_insert
     LastName = NEW.LastName,
      changedat = NOW();
 
+#show triggers in db
 SHOW TRIGGERS;
 
+# trigger the trigger
 INSERT INTO People (FirstName,LastName,DOB,State,Balance)
 VALUES ("Trigger", "Happy", "1999-12-25","MN",1000.34);
 
+#see if trigger worked
+Select * From new_person_join;

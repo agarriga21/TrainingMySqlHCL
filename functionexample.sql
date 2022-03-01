@@ -1,6 +1,6 @@
 #Built in Function Examples using database_sample db
 
-#String Functions
+#String Functions 
 Select FirstName, Length(FirstName) from people;
 Select FirstName, UCASE(FirstName) from people;
 Select FirstName, LCASE(FirstName) from people;
@@ -29,7 +29,7 @@ CASE
 END as "Balance Description"
 FROM People;
 
-#Custom Function Classicmodels
+#Custom Function database_sample
 Drop Function EmployeeLevel;
 
 DELIMITER $$
@@ -61,6 +61,7 @@ DELIMITER ;
 SHOW FUNCTION STATUS 
 WHERE db = 'database_sample';
 
+#testing new function
 SELECT 
 	EMPID,
     Job, 
