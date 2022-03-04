@@ -11,6 +11,7 @@ Select balance, CEILING(balance) from people;
 Select balance, FLOOR(balance) from people;
 Select SUM(balance), SQRT(SUM(balance)) as "Square Root of the Balance Sum" from people;
 Select balance, RAND() as "Random Decimal" from people; 
+Select balance, Ceiling(RAND()*100) as "Random INT" from people; 
 
 #Date Functions
 Select DOB, DAYNAME(DOB) from people;
@@ -26,7 +27,8 @@ CASE
     WHEN Balance >= 20000 THEN "They have a high savings"
     WHEN Balance < 20000 AND Balance >=1000 THEN "They have a medium savings"
     ELSE "Low savings"
-END as "Balance Description"
+END
+ as "Balance Description"
 FROM People;
 
 #Custom Function database_sample
@@ -53,7 +55,7 @@ BEGIN
     ELSEIF Salary < 30000 THEN
         SET employeeLevel = 'Level 1';
     END IF;
-	-- return the customer level
+	-- return the employee level
 	RETURN (employeeLevel);
 END$$
 DELIMITER ;
@@ -61,10 +63,11 @@ DELIMITER ;
 SHOW FUNCTION STATUS 
 WHERE db = 'database_sample';
 
-#testing new function
 SELECT 
 	EMPID,
     Job, 
     EmployeeLevel(Salary)
 FROM
     employee;
+    
+

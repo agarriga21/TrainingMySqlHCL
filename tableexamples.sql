@@ -1,4 +1,6 @@
 #Creating the Database database_sample
+
+#Drop Database database_sample;
 CREATE DATABASE database_sample;
 
 #Table Creating
@@ -70,7 +72,7 @@ DELETE FROM People WHERE State = 'TX';
 TRUNCATE TABLE People;
 
 DROP TABLE People;
-DROP TABLE Employee;
+#DROP TABLE Employee;
 
 #To show Changes
 SELECT * FROM People;

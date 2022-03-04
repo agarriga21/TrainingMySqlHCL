@@ -3,21 +3,29 @@
 #Alter add
 ALTER TABLE People
 ADD Country CHAR(2);
+
 Select * From People;
 
 #Alter modify
 ALTER TABLE People
-MODIFY COLUMN Country varchar(255) NOT NULL;
+MODIFY COLUMN Country varchar(255);
+
 Select * From People;
 
 #Alter drop
 ALTER TABLE People
 DROP COLUMN Country;
+
 Select * From People;
 
 #Update
 Select * FROM Employee;
 UPDATE Employee SET ManagerID = 1 WHERE ManagerID IS NULL;
+
+#Update 2 with altered column
+Select * FROM People;
+UPDATE People SET Country = "USA" WHERE State IS NOT NULL;
+UPDATE People SET Country = "Other" WHERE State IS NULL;
 
 #Copy with like
 CREATE TABLE copy_emp LIKE Employee;

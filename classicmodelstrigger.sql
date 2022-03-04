@@ -25,7 +25,7 @@ SHOW TRIGGERS;
 #Trigger the trigger
 UPDATE employees 
 SET 
-    lastName = 'Phan'
+    lastName = 'John'
 WHERE
     employeeNumber = 1056;
     

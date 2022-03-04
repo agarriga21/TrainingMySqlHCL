@@ -1,4 +1,8 @@
 #Custom Function using Classicmodels
+-- hello
+/* ag
+zvvzcvdf
+*/
 DELIMITER $$
 
 CREATE FUNCTION CustomerLevel(

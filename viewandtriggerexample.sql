@@ -2,6 +2,7 @@
 
 #View Example
 DROP VIEW custom_people_view;
+
 CREATE VIEW custom_people_view AS
 SELECT concat(FirstName," ", LastName) as "Full Name", 
 TIMESTAMPDIFF(YEAR, DOB, CURDATE()) AS Age,
@@ -48,5 +49,6 @@ SHOW TRIGGERS;
 INSERT INTO People (FirstName,LastName,DOB,State,Balance)
 VALUES ("Trigger", "Happy", "1999-12-25","MN",1000.34);
 
+Select* from people;
 #see if trigger worked
 Select * From new_person_join;
