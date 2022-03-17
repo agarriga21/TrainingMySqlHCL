@@ -10,6 +10,7 @@ Select * From People;
 ALTER TABLE People
 MODIFY COLUMN Country varchar(255);
 
+
 Select * From People;
 
 #Alter drop
