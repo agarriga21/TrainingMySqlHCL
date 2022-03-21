@@ -40,11 +40,8 @@ CREATE TABLE usa_company_cars (
     Primary Key (CarID)
 );
 Select * From usa_company_cars;
-/*TODO
-#CREATE TABLE office_type (
-    OfficeID int,
-	,FOREIGN KEY (OfficeID) REFERENCES offices(officeCode)
-);*/
+
+
 
 #Insert usa_company_cars all columns Data
 INSERT INTO usa_company_cars (AssignedOfficeID, PrimaryDriverID, ModelYear, Make, Model, LicensePlate, FuelType, DatePurchased, StateRegistered, Cost)
@@ -114,12 +111,30 @@ INSERT INTO usa_company_cars (AssignedOfficeID, PrimaryDriverID, ModelYear, Make
 VALUES (0, 0, 5000, "Make","Model","XXX-0000","Gas", "2000-01-01","TX",10000.00);
 
 
+#Creating another table office_type with foreign key
+CREATE TABLE office_type (
+    OfficeID varchar(10) unique, #cannot be int since the key it is referring to is varchar(10)
+    BuildingSize varchar(255),
+    BuildingType varchar(255),
+    PrimaryLanguage varchar(255),
+	FOREIGN KEY (OfficeID) REFERENCES offices(officeCode)
+);
 
-#TODO
+
 #Insert Office type Data
-#INSERT INTO office_type ()
-#Values();
+INSERT INTO office_type (OfficeID,BuildingSize,BuildingType,PrimaryLanguage)
+Values(1,"Large","Skyscraper","English"),
+(2,"Medium","One story building","English"),
+(3,"Small","Shared space skyscraper","English"),
+(5,"Large","Skyscraper","Japanese"),
+(7,"Medium","Skyscraper one floor","English"),
+(9,"Small","Small bulding with yard","English");
 
+Select * From office_type;
+
+#Foreign key constraint test
+INSERT INTO office_type (OfficeID,BuildingSize,BuildingType,PrimaryLanguage)
+Values(10,"Large","Skyscraper","English");
 
 #Deleting
 DELETE FROM usa_company_cars WHERE FuelType = 'Gas';
@@ -127,8 +142,8 @@ DELETE FROM usa_company_cars WHERE FuelType = 'Gas';
 TRUNCATE TABLE usa_company_cars;
 
 DROP TABLE usa_company_cars;
+#re-run create table and inserts for further examples 
 
-
-#To show Changes
+#To show changes and verify tables are correct for next section
 SELECT * FROM usa_company_cars;
-#SELECT * FROM office_type;
+SELECT * FROM office_type;
