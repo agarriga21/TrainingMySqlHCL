@@ -47,6 +47,35 @@ Select count(employeeNumber) from employees where officeCode = 1;
 Select STD(creditLimit) as "Standard Deviation", Variance(creditLimit) as "Variance" from customers;
 Select concat('$',format(avg(amount),2)) as "Payment Average", concat('$',max(amount)) as "Highest Payment", concat('$',min(amount)) as "Lowest Payment" from payments;
 
-#TODO more complex aggregate
 
-#TODO Group By Examples
+
+#Group By Examples
+Select officeCode,count(employeeNumber) from employees group by officeCode;
+
+Select country,count(customerNumber) as "Customer Amount" from customers group by country;
+
+Select customerNumber ,sum(amount) as "Total Payment Amount" from payments 
+group by customerNumber 
+order by sum(amount) desc
+LIMIT 10;
+
+#same as previous with added having and no limit
+Select customerNumber ,sum(amount) as "Total Payment Amount" from payments 
+group by customerNumber 
+Having sum(amount)> 150000
+order by sum(amount) desc;
+
+
+SELECT productLine, count(productCode) as "Amount of Products",
+concat('$',Sum(quantityInStock*buyPrice)) as "Total Buy Price",
+concat('$',Sum(quantityInStock*MSRP)) as "Total Sale Price" FROM products 
+GROUP BY productLine 
+ORDER BY Sum(quantityInStock*buyPrice) DESC;
+
+#same as previous with added having
+SELECT productLine, count(productCode) as "Amount of Products",
+concat('$',Sum(quantityInStock*buyPrice)) as "Total Buy Price",
+concat('$',Sum(quantityInStock*MSRP)) as "Total Sale Price" FROM products 
+GROUP BY productLine 
+Having count(productCode) < 20
+ORDER BY Sum(quantityInStock*buyPrice) DESC;
