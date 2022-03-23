@@ -31,3 +31,5 @@ WHERE
     
     #Verify trigger worked
     SELECT * FROM employees_audit;
+    
+    #TODO add example for after insert on usa_company_cars
