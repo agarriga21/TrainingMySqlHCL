@@ -43,7 +43,7 @@ Select * From usa_company_cars;
 
 
 
-#Insert usa_company_cars all columns Data
+#Insert usa_company_cars all columns Data - rerun after drop or delete
 INSERT INTO usa_company_cars (AssignedOfficeID, PrimaryDriverID, ModelYear, Make, Model, LicensePlate, FuelType, DatePurchased, StateRegistered, Cost)
 VALUES 
 (1, 1076, 2008, "Ford","F250","RTW-8888","Diesel", "2012-05-11","CA",40992.88),
@@ -55,13 +55,13 @@ VALUES
 (3, 1286, 2008, "Toyota","Prius","VDH-4446","Hybrid", "2010-07-01","NY",25212.34),
 (0, 7567, 2020, "Chevrolet","Spark","EEF-9067","Gas", "2021-09-20","TX",16244.94);
 
-#Display Primary Driver Default value example
+#Display Primary Driver Default value example - rerun after drop or delete
 INSERT INTO usa_company_cars (AssignedOfficeID, ModelYear, Make, Model, LicensePlate, FuelType, DatePurchased, StateRegistered, Cost)
 VALUES (9, 2000, "Ford","F250","HGV-5324","Diesel", "2004-12-14","MN",25212.34),
 (3, 2002, "Ford","Crown Victoria","HYB-5112","Gas", "2003-04-19","NY",15993.67),
 (9, 2004, "GMC","Sierra","FDL-5333","Gas", "2006-11-29","MN",28050.01);
 
-#Display Assigned Office Default value example
+#Display Assigned Office Default value example - rerun after drop or delete
 INSERT INTO usa_company_cars (PrimaryDriverID, ModelYear, Make, Model, LicensePlate, FuelType, DatePurchased, StateRegistered, Cost)
 VALUES 
 (1002, 2020, "Ford","Raptor","TGV-6327","Gas", "2020-02-20","CA",75065.10);
@@ -137,11 +137,17 @@ INSERT INTO office_type (OfficeID,BuildingSize,BuildingType,PrimaryLanguage)
 Values(10,"Large","Skyscraper","English");
 
 #Deleting
+Select * from usa_company_cars;
+
 DELETE FROM usa_company_cars WHERE FuelType = 'Gas';
+Select * from usa_company_cars;
+
 
 TRUNCATE TABLE usa_company_cars;
+Select * from usa_company_cars;
 
 DROP TABLE usa_company_cars;
+Select * from usa_company_cars;
 #re-run create table and inserts for further examples 
 
 #To show changes and verify tables are correct for next section

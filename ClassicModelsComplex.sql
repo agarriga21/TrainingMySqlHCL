@@ -12,7 +12,7 @@ select * from payments;
 select * from productlines;
 select * from products;
 
-#some test data
+#some test data if not already added
 INSERT INTO offices (officeCode,phone,addressLine1,addressLine2,state,postalCode,territory,city,country)
 VALUES (0,"N/A","N/A","N/A","N/A","N/A","N/A", "Remote" ,"USA");
 
