@@ -1,5 +1,5 @@
 #table examples classicmodels
-
+#look up composite key
 #Viewing tables in the db to show what this db is
 select * from employees;
 select * from offices;
@@ -22,7 +22,7 @@ VALUES (7567,"Worker", "Remote" ,"x3643", "remotework@gmail.com",0,1143,"Sales R
 
 #Table Creating examples
 
-#drop table usa_company_cars;
+drop table usa_company_cars;
 CREATE TABLE usa_company_cars (
     CarID int AUTO_INCREMENT,
     AssignedOfficeID int DEFAULT 0,
@@ -37,7 +37,7 @@ CREATE TABLE usa_company_cars (
     Cost DECIMAL(65, 2),
     CHECK (Cost>=0),
     CHECK (ModelYear>=1900 AND ModelYear<=2100 ),
-    Primary Key (CarID)
+    Primary Key (CarID) #you can put multiple values into primary key to make a composite key, a key with multiple columns if one doesnt have uniqueness
 );
 Select * From usa_company_cars;
 

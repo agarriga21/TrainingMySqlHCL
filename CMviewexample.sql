@@ -27,3 +27,5 @@ desc;
 #view view
 Select * From custom_employee_view;
 
+Select * From custom_employee_view where `Company Car Value` ="High Cost Vehicle";
+

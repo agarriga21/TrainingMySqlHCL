@@ -24,7 +24,7 @@ SELECT * FROM employees CROSS JOIN usa_company_cars;
 
 #Self Join
 SELECT A.firstName AS firstName1, A.employeeNumber AS employeeNumber1, 
-B.firstName AS firstName2, B.employeeNumber AS employeeNumber2, A.reportsTo
+B.firstName AS Manager, B.employeeNumber AS employeeNumber2, A.reportsTo
 FROM employees A, employees B
 WHERE A.reportsTo = B.employeeNumber
 ORDER BY A.officeCode;

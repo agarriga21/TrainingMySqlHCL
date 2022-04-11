@@ -20,6 +20,7 @@ Select DatePurchased, DAYNAME(DatePurchased) from usa_company_cars;
 Select DatePurchased, YEAR(DatePurchased) from usa_company_cars;
 Select DatePurchased, DATE_FORMAT(DatePurchased, "%M %d %Y") from usa_company_cars;
 Select CURRENT_TIMESTAMP();
+Select CURDATE();
 Select DatePurchased,CURRENT_DATE(),TIMESTAMPDIFF(YEAR, DatePurchased, CURDATE()) AS "Years Owned" from usa_company_cars;
 
 #Advanced Functions
@@ -34,7 +35,7 @@ END
 FROM customers;
 
 #Custom Function using Classicmodels
-
+drop function CustomerLevel;
 DELIMITER $$
 
 CREATE FUNCTION CustomerLevel(
@@ -47,10 +48,11 @@ BEGIN
 
     IF credit > 50000 THEN
 		SET customerLevel = 'PLATINUM';
-    ELSEIF (credit >= 50000 AND 
-			credit <= 10000) THEN
+    ELSEIF (credit <= 50000 AND 
+			credit >= 10000) THEN
         SET customerLevel = 'GOLD';
-    ELSEIF credit < 10000 THEN
+    ELSEIF (credit <10000 AND 
+			credit > 0) THEN
         SET customerLevel = 'SILVER';
         ELSE
         SET customerLevel = 'BRONZE';
@@ -61,12 +63,13 @@ END$$
 DELIMITER ;
 
 #see if function is in db
-SHOW FUNCTION STATUS 
+SHOW FUNCTION STATUS
 WHERE db = 'classicmodels';
 
 #Testing new function
 SELECT 
     customerName, 
+     creditLimit,
     CustomerLevel(creditLimit)
 FROM
     customers

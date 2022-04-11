@@ -8,6 +8,7 @@ CREATE TABLE employees_audit (
     changedat DATETIME DEFAULT NULL,
     action VARCHAR(50) DEFAULT NULL
 );
+Select * From employees_audit;
 
 #Create Trigger
 CREATE TRIGGER before_employee_update 
