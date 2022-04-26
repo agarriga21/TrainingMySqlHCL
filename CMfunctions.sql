@@ -7,10 +7,13 @@ Select firstName, Length(firstName) from employees;
 Select firstName, UCASE(firstName) from employees;
 Select firstName, LCASE(firstName) from employees;
 Select firstName, LOCATE("an",firstName) from employees; 
+SELECT firstName, SUBSTR( firstName,3) FROM employees ;
+SELECT firstName, INSTR( firstName, 'a' )  FROM employees ; 
 
 #Numeric Functions
 Select MSRP, CEILING(MSRP) from products;
 Select MSRP, FLOOR(MSRP) from products;
+SELECT MSRP, ROUND(MSRP, -2) FROM products ;
 Select SUM(MSRP), SQRT(SUM(MSRP)) as "Square Root of the MSRP Sum" from products;
 Select MSRP, RAND() as "Random Decimal" from products; 
 Select MSRP, CEILING(RAND()*(300-30)+30)+.99 as "Random .99 Price between 30 and 300" from products; 
@@ -19,6 +22,7 @@ Select MSRP, CEILING(RAND()*(300-30)+30)+.99 as "Random .99 Price between 30 and
 Select DatePurchased, DAYNAME(DatePurchased) from usa_company_cars;
 Select DatePurchased, YEAR(DatePurchased) from usa_company_cars;
 Select DatePurchased, DATE_FORMAT(DatePurchased, "%M %d %Y") from usa_company_cars;
+SELECT CONVERT(DatePurchased,DATETIME) from usa_company_cars;
 Select CURRENT_TIMESTAMP();
 Select CURDATE();
 Select DatePurchased,CURRENT_DATE(),TIMESTAMPDIFF(YEAR, DatePurchased, CURDATE()) AS "Years Owned" from usa_company_cars;
