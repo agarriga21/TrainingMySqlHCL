@@ -1,6 +1,6 @@
-#table examples classicmodels
-#look up composite key
-#Viewing tables in the db to show what this db is
+#table examples classicmodels. Re-runable .sql to re-build tables
+
+#Viewing tables in the db to show what is contained in the classicmodels db
 select * from employees;
 select * from offices;
 select * from customers;
@@ -11,21 +11,21 @@ select * from productlines;
 select * from products;
 
 #Data needed in classicmodels for later examples
-INSERT INTO offices (officeCode,phone,addressLine1,addressLine2,state,postalCode,territory,city,country)
+INSERT IGNORE INTO offices (officeCode,phone,addressLine1,addressLine2,state,postalCode,territory,city,country)
 VALUES (0,"N/A","N/A","N/A","N/A","N/A","N/A", "Remote" ,"USA");
 
-INSERT INTO offices (officeCode,phone,addressLine1,addressLine2,state,postalCode,territory,city,country)
+INSERT IGNORE INTO offices (officeCode,phone,addressLine1,addressLine2,state,postalCode,territory,city,country)
 VALUES (9,"435-647-7654","1435 Bart ST","Office 36","MN","94324","USA", "St Paul" ,"USA");
 
-INSERT INTO offices (officeCode,phone,addressLine1,addressLine2,state,postalCode,territory,city,country)
+INSERT IGNORE INTO offices (officeCode,phone,addressLine1,addressLine2,state,postalCode,territory,city,country)
 VALUES (10,"435-647-7654","1435 Test ST","Office 5","TX","75036","USA", "Frisco" ,"USA");
 
-INSERT INTO employees (employeeNumber,lastName,firstName,extension,email,officeCode,reportsTo,jobTitle)
+INSERT IGNORE INTO employees (employeeNumber,lastName,firstName,extension,email,officeCode,reportsTo,jobTitle)
 VALUES (7567,"Worker", "Remote" ,"x3643", "remotework@gmail.com",0,1143,"Sales Rep");
 
 #Table Creating examples
 
-drop table usa_company_cars;
+DROP TABLE IF EXISTS usa_company_cars;
 CREATE TABLE usa_company_cars (
     CarID int AUTO_INCREMENT,
     AssignedOfficeID int DEFAULT 0,
@@ -69,6 +69,34 @@ INSERT INTO usa_company_cars (PrimaryDriverID, ModelYear, Make, Model, LicensePl
 VALUES 
 (1002, 2020, "Ford","Raptor","TGV-6327","Gas", "2020-02-20","CA",75065.10);
 
+
+#Creating another table office_type with foreign key
+DROP TABLE IF EXISTS office_type;
+CREATE TABLE office_type (
+    OfficeID varchar(10) unique, #cannot be int since the key it is referring to is varchar(10)
+    BuildingSize varchar(255),
+    BuildingType varchar(255),
+    PrimaryLanguage varchar(255),
+	FOREIGN KEY (OfficeID) REFERENCES offices(officeCode)
+);
+
+
+#Insert Office type Data
+INSERT INTO office_type (OfficeID,BuildingSize,BuildingType,PrimaryLanguage)
+Values(1,"Large","Skyscraper","English"),
+(2,"Medium","One story building","English"),
+(3,"Small","Shared space skyscraper","English"),
+(5,"Large","Skyscraper","Japanese"),
+(7,"Medium","Skyscraper one floor","English"),
+(9,"Small","Small bulding with yard","English");
+
+Select * From office_type;
+
+#Foreign key constraint test
+INSERT INTO office_type (OfficeID,BuildingSize,BuildingType,PrimaryLanguage)
+Values(20,"Large","Skyscraper","English");
+
+
 #Data type violation examples
 
 #State over limit of 2 characters
@@ -77,7 +105,7 @@ VALUES (0, 0, 2000, "Make","Model","XXX-0000","Gas", "2000-01-01","TXX",10000.00
 
 #String in integar
 INSERT INTO usa_company_cars (AssignedOfficeID, PrimaryDriverID, ModelYear, Make, Model, LicensePlate, FuelType, DatePurchased, StateRegistered, Cost)
-VALUES (0, 0, "two thousand", "Make","Model","XXX-0000","Gas", "2000-01-01","TXX",10000.00);
+VALUES (0, 0, "two thousand", "Make","Model","XXX-0000","Gas", "2000-01-01","TX",10000.00);
 
 #Testing constraints examples
 
@@ -114,45 +142,5 @@ INSERT INTO usa_company_cars (AssignedOfficeID, PrimaryDriverID, ModelYear, Make
 VALUES (0, 0, 5000, "Make","Model","XXX-0000","Gas", "2000-01-01","TX",10000.00);
 
 
-#Creating another table office_type with foreign key
-CREATE TABLE office_type (
-    OfficeID varchar(10) unique, #cannot be int since the key it is referring to is varchar(10)
-    BuildingSize varchar(255),
-    BuildingType varchar(255),
-    PrimaryLanguage varchar(255),
-	FOREIGN KEY (OfficeID) REFERENCES offices(officeCode)
-);
 
 
-#Insert Office type Data
-INSERT INTO office_type (OfficeID,BuildingSize,BuildingType,PrimaryLanguage)
-Values(1,"Large","Skyscraper","English"),
-(2,"Medium","One story building","English"),
-(3,"Small","Shared space skyscraper","English"),
-(5,"Large","Skyscraper","Japanese"),
-(7,"Medium","Skyscraper one floor","English"),
-(9,"Small","Small bulding with yard","English");
-
-Select * From office_type;
-
-#Foreign key constraint test
-INSERT INTO office_type (OfficeID,BuildingSize,BuildingType,PrimaryLanguage)
-Values(10,"Large","Skyscraper","English");
-
-#Deleting
-Select * from usa_company_cars;
-
-DELETE FROM usa_company_cars WHERE FuelType = 'Gas';
-Select * from usa_company_cars;
-
-
-TRUNCATE TABLE usa_company_cars;
-Select * from usa_company_cars;
-
-DROP TABLE usa_company_cars;
-Select * from usa_company_cars;
-#re-run create table and inserts for further examples 
-
-#To show changes and verify tables are correct for next section
-SELECT * FROM usa_company_cars;
-SELECT * FROM office_type;

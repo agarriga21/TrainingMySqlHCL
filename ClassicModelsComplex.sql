@@ -38,7 +38,7 @@ Inner Join payments using (customerNumber)
 group by e.employeeNumber;
 
 #Employees who work remotely (office code 0)
-Select concat(firstName, ' ', lastName) as 'Name', officeCode, city from employees
+Select concat(firstName, ' ', lastName) as 'Name', officeCode,city from employees
 Left Join offices using (officeCode)
 where officeCode =0;
 

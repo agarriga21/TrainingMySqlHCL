@@ -65,7 +65,7 @@ group by customerNumber
 Having sum(amount)> 150000
 order by sum(amount) desc;
 
-
+Select * from products;
 SELECT productLine, count(productCode) as "Amount of Products",
 concat('$',Sum(quantityInStock*buyPrice)) as "Total Buy Price",
 concat('$',Sum(quantityInStock*MSRP)) as "Total Sale Price" FROM products 

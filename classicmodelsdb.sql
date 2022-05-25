@@ -1,4 +1,4 @@
-drop database classicmodels;
+
 /*
 *********************************************************************
 http://www.mysqltutorial.org

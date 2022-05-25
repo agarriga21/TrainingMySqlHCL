@@ -32,5 +32,7 @@ WHERE
     
     #Verify trigger worked
     SELECT * FROM employees_audit;
-    
+   
+   
+   Select * from employees;
     
