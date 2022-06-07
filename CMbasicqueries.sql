@@ -15,6 +15,7 @@ Select * from employees where officeCode=1 or officeCode=4;
 Select * from employees where officeCode=1 and jobTitle = "Sales Rep";
 Select * from employees where NOT jobTitle = "Sales Rep";
 Select * from employees where officeCode between 2 and 5;
+Select * from employees where firstName between "a" and "d";
 Select * from employees where reportsTo IN (1002,1056,1102);
 Select firstName from employees WHERE firstName LIKE 'P%';
 Select firstName from employees WHERE firstName LIKE '%e';
