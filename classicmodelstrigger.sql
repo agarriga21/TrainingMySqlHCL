@@ -10,7 +10,7 @@ CREATE TABLE employees_audit (
 );
 Select * From employees_audit;
 
-#Create Trigger
+#Create Trigger update
 CREATE TRIGGER before_employee_update 
     BEFORE UPDATE ON employees
     FOR EACH ROW 
@@ -20,19 +20,54 @@ CREATE TRIGGER before_employee_update
      lastname = OLD.lastname,
      changedat = NOW();
 
+#Create Trigger insert
+CREATE TRIGGER after_employee_insert
+    AFTER INSERT ON employees
+    FOR EACH ROW 
+ INSERT INTO employees_audit
+ SET action = 'insert',
+     employeeNumber = NEW.employeeNumber,
+     lastname = NEW.lastname,
+     changedat = NOW();
+     
+     #Create Trigger delete
+CREATE TRIGGER before_employee_delete 
+    BEFORE DELETE ON employees
+    FOR EACH ROW 
+ INSERT INTO employees_audit
+ SET action = 'delete',
+     employeeNumber = OLD.employeeNumber,
+     lastname = OLD.lastname,
+     changedat = NOW();
+
 #display trigger
 SHOW TRIGGERS;
 
-#Trigger the trigger
+#Trigger the update trigger
 UPDATE employees 
 SET 
-    lastName = 'John'
+    lastName = 'Patterson'
 WHERE
     employeeNumber = 1056;
     
-    #Verify trigger worked
+    #Verify update trigger worked
     SELECT * FROM employees_audit;
+   Select * from employees;
    
-   
+   #Trigger the insert trigger
+insert into employees (employeeNumber, lastName, firstName, extension, email, officeCode, reportsTo, jobTitle) 
+values
+(3555, "Griffin", "Peter", "x7777", "pg@gmail.com", 1, 1002, "Janitor");
+
+#Verify insert trigger worked
+    SELECT * FROM employees_audit;
+    Select * from employees;
+    
+    #Trigger the delete trigger
+    Delete from employees where employeeNumber = 3555;
+
+#Verify delete trigger worked
+    SELECT * FROM employees_audit;
+    
    Select * from employees;
     
