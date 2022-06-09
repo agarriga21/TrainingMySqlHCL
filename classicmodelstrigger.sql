@@ -46,7 +46,7 @@ SHOW TRIGGERS;
 #Trigger the update trigger
 UPDATE employees 
 SET 
-    lastName = 'Patterson'
+    lastName = 'Gonzales'
 WHERE
     employeeNumber = 1056;
     
@@ -70,4 +70,5 @@ values
     SELECT * FROM employees_audit;
     
    Select * from employees;
+
     

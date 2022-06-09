@@ -10,7 +10,7 @@ Select firstName, LOCATE("an",firstName) from employees;
 SELECT firstName, SUBSTR( firstName,3) FROM employees;
 SELECT firstName, INSTR( firstName, 'a' )  FROM employees ; 
 SELECT firstName, SUBSTR( firstName,INSTR( firstName, 'a' )) FROM employees;
-SELECT 10100, Cast(10100 as Char(4));
+SELECT 10100, Cast(10100 as Char(6));
 
 #Numeric Functions
 Select MSRP, CEILING(MSRP) from products;
@@ -18,7 +18,7 @@ Select MSRP, FLOOR(MSRP) from products;
 SELECT MSRP, ROUND(MSRP, -2) FROM products ;
 Select SUM(MSRP), SQRT(SUM(MSRP)) as "Square Root of the MSRP Sum" from products;
 Select MSRP, RAND() as "Random Decimal" from products;
-Select MSRP, format(CEILING(RAND()*300),2) as "Random Decimal" from products; 
+Select MSRP, concat("$",format(CEILING(RAND()*300),2)) as "Random Price" from products; 
 Select MSRP, CEILING(RAND()*(300-30)+30)+.99 as "Random .99 Price between 30 and 300" from products; 
 SELECT "10.99",CAST('10.99' AS DECIMAL(5,2));
 
@@ -43,7 +43,7 @@ END
 FROM customers;
 
 #Custom Function using Classicmodels
-drop function CustomerLevel;
+#drop function CustomerLevel;
 DELIMITER $$
 
 CREATE FUNCTION CustomerLevel(

@@ -14,30 +14,19 @@ where SCHEMA_NAME = "classicmodels"
 order by SUM_TIMER_WAIT desc
 limit 10;
 
+#finding where an index is needed
+USE sys;
+SELECT * FROM SCHEMA_TABLES_WITH_FULL_TABLE_SCANS;
+SELECT * FROM STATEMENTS_WITH_FULL_TABLE_SCANS;
+
 #Analzing and Optimizing Queries
 Explain Select * From customers where state = "CA";
 Explain format=json Select * From customers where state = "CA";
 Explain format=tree Select * From customers where state = "CA";
 Explain analyze Select * From customers where state = "CA";
+Select * From customers where state = "CA";
 
-#adding an index
-CREATE INDEX state_index
-ON customers (state);
-
-ALTER TABLE customers
-DROP INDEX state_index;
-
-Explain analyze Select customerName,city From customers where state = "CA";
-
-#covering index
-ALTER TABLE customers
-ADD INDEX state_city_name (state,city,customerName);
-
-ALTER TABLE customers
-DROP INDEX state_city_name;
-
-Explain delete from customers where state = "CA";
-
+#More complex explains
 Explain Select customerNumber ,sum(amount) as "Total Payment Amount" from payments 
 group by customerNumber 
 order by sum(amount) desc
@@ -58,9 +47,33 @@ group by customerNumber
 order by sum(amount) desc
 LIMIT 10;
 
-USE sys;
-SELECT * FROM SCHEMA_TABLES_WITH_FULL_TABLE_SCANS;
-SELECT * FROM STATEMENTS_WITH_FULL_TABLE_SCANS;
+Select customerNumber ,sum(amount) as "Total Payment Amount" from payments 
+group by customerNumber 
+order by sum(amount) desc
+LIMIT 10;
+
+#Explain delete
+Explain delete from customers where state = "CA";
+
+#adding an index
+Explain analyze Select * From customers where state = "CA";
+Select * From customers where state = "CA";
+
+CREATE INDEX state_index
+ON customers (state);
+
+ALTER TABLE customers
+DROP INDEX state_index;
+
+Explain analyze Select customerName,city From customers where state = "CA";
+
+#covering index
+ALTER TABLE customers
+ADD INDEX state_city_name (state,city,customerName);
+
+ALTER TABLE customers
+DROP INDEX state_city_name;
+
 
 # Find unused indexes
 USE sys;
@@ -70,6 +83,7 @@ SELECT * FROM SCHEMA_REDUNDANT_INDEXES;
 
 #composite indexes
 Explain analyze Select * From customers where state = "CA" and creditLimit>60000;
+Select * From customers where state = "CA" and creditLimit>60000;
 
 CREATE INDEX state_creditLimit_index
 ON customers (state,creditLimit);
@@ -78,6 +92,7 @@ ALTER TABLE customers
 DROP INDEX state_creditLimit_index;
 
 Explain analyze Select * From customers where state = "CA" and city="San Francisco";
+Select * From customers where state = "CA" and city="San Francisco";
 
 CREATE INDEX city_state_index
 ON customers (city,state);
