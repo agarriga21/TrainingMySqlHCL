@@ -60,6 +60,12 @@ group by customerNumber
 order by sum(amount) desc
 LIMIT 10;
 
+#Double group by
+Select country, state, count(customerNumber) as "Number of Customers" from customers 
+group by country,state 
+order by country,count(customerNumber) 
+desc;
+
 #same as previous with added having and no limit
 Select customerNumber ,sum(amount) as "Total Payment Amount" from payments 
 group by customerNumber 

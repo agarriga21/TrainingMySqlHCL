@@ -82,7 +82,7 @@ CREATE TABLE office_type (
 
 
 #Insert Office type Data
-INSERT INTO office_type (OfficeID,BuildingSize,BuildingType,PrimaryLanguage)
+INSERT INTO office_type
 Values(1,"Large","Skyscraper","English"),
 (2,"Medium","One story building","English"),
 (3,"Small","Shared space skyscraper","English"),
@@ -114,10 +114,10 @@ VALUES (0, 0, "two thousand", "Make","Model","XXX-0000","Gas", "2000-01-01","TX"
 #Model Year
 INSERT INTO usa_company_cars (AssignedOfficeID, PrimaryDriverID, ModelYear, Make, Model, LicensePlate, FuelType, DatePurchased, StateRegistered, Cost)
 VALUES (0, 0, null, "Make","Model","XXX-0000","Gas", "2000-01-01","TX",10000.00);
-#Assigned Office
+#Make
 INSERT INTO usa_company_cars (AssignedOfficeID, PrimaryDriverID, ModelYear, Make, Model, LicensePlate, FuelType, DatePurchased, StateRegistered, Cost)
 VALUES (0, 0, 2000, null,"Model","XXX-0000","Gas", "2000-01-01","TX",10000.00);
-#Primary Driver
+#Model
 INSERT INTO usa_company_cars (AssignedOfficeID, PrimaryDriverID, ModelYear, Make, Model, LicensePlate, FuelType, DatePurchased, StateRegistered, Cost)
 VALUES (0, 0, 2000, "Make",null,"XXX-0000","Gas", "2000-01-01","TX",10000.00);
 

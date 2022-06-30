@@ -10,7 +10,7 @@ Select firstName, LOCATE("an",firstName) from employees;
 SELECT firstName, SUBSTR( firstName,3) FROM employees;
 SELECT firstName, INSTR( firstName, 'a' )  FROM employees ; 
 SELECT firstName, SUBSTR( firstName,INSTR( firstName, 'a' )) FROM employees;
-SELECT 10100, Cast(10100 as Char(6));
+SELECT 10100, Cast(10100 as Char(7));
 
 #Numeric Functions
 Select MSRP, CEILING(MSRP) from products;
@@ -29,6 +29,7 @@ Select DatePurchased, DATE_FORMAT(DatePurchased, "%M/%d/%Y") from usa_company_ca
 SELECT DatePurchased,CONVERT(DatePurchased,DATETIME) from usa_company_cars;
 Select CURRENT_TIMESTAMP();
 Select CURDATE();
+Select Now();
 Select DatePurchased,CURRENT_DATE(),TIMESTAMPDIFF(YEAR, DatePurchased, CURDATE()) AS "Years Owned" from usa_company_cars;
 
 #Advanced Functions
@@ -44,7 +45,7 @@ FROM customers;
 
 #Custom Function using Classicmodels
 #drop function CustomerLevel;
-DELIMITER $$
+DELIMITER $$ 
 
 CREATE FUNCTION CustomerLevel(
 	credit DECIMAL(10,2)
@@ -83,5 +84,8 @@ FROM
     customers
 ORDER BY 
     customerName;
+    
+    SELECT 
+    CustomerLevel(5000);
     
     Select cost,CustomerLevel(cost) from usa_company_cars;

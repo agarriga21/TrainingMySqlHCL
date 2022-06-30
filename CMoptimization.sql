@@ -12,12 +12,12 @@ select * from events_statements_summary_by_digest;
 select * from events_statements_summary_by_digest
 where SCHEMA_NAME = "classicmodels"
 order by SUM_TIMER_WAIT desc
-limit 10;
+limit 20;
 
 #finding where an index is needed
 USE sys;
 SELECT * FROM SCHEMA_TABLES_WITH_FULL_TABLE_SCANS;
-SELECT * FROM STATEMENTS_WITH_FULL_TABLE_SCANS;
+SELECT * FROM STATEMENTS_WITH_FULL_TABLE_SCANS where db= "classicmodels";
 
 #Analzing and Optimizing Queries
 Explain Select * From customers where state = "CA";
@@ -66,7 +66,7 @@ ALTER TABLE customers
 DROP INDEX state_index;
 
 Explain analyze Select customerName,city From customers where state = "CA";
-
+Select customerName,city From customers where state = "CA";
 #covering index
 ALTER TABLE customers
 ADD INDEX state_city_name (state,city,customerName);

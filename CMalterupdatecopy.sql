@@ -9,7 +9,7 @@ Select * From usa_company_cars;
 
 #Alter modify
 ALTER TABLE usa_company_cars
-MODIFY COLUMN VehicleType varchar(50);
+MODIFY COLUMN VehicleType varchar(60);
 
 Select * From usa_company_cars;
 
