@@ -15,13 +15,14 @@ INSERT IGNORE INTO offices (officeCode,phone,addressLine1,addressLine2,state,pos
 VALUES (0,"N/A","N/A","N/A","N/A","N/A","N/A", "Remote" ,"USA");
 
 INSERT IGNORE INTO offices (officeCode,phone,addressLine1,addressLine2,state,postalCode,territory,city,country)
-VALUES (9,"435-647-7654","1435 Bart ST","Office 36","MN","94324","USA", "St Paul" ,"USA");
-
-INSERT IGNORE INTO offices (officeCode,phone,addressLine1,addressLine2,state,postalCode,territory,city,country)
-VALUES (10,"435-647-7654","1435 Test ST","Office 5","TX","75036","USA", "Frisco" ,"USA");
+VALUES (9,"435-647-7654","1435 Bart ST","Office 36","MN","94324","USA", "St Paul" ,"USA"),
+(10,"435-647-7654","1435 Test ST","Office 5","TX","75036","USA", "Frisco" ,"USA");
 
 INSERT IGNORE INTO employees (employeeNumber,lastName,firstName,extension,email,officeCode,reportsTo,jobTitle)
-VALUES (7567,"Worker", "Remote" ,"x3643", "remotework@gmail.com",0,1143,"Sales Rep");
+VALUES (7567,"Worker", "Remote" ,"x3643", "remotework@gmail.com",0,1143,"Sales Rep"),
+(7568,"Jenkins", "Ralph" ,"x3633", "Theralphster@gmail.com",0,1143,"Sales Rep");
+
+
 
 #Table Creating examples
 
