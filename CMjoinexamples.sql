@@ -2,7 +2,7 @@
 
 #Left Join
 SELECT * FROM employees
-LEFT JOIN usa_company_cars ON employees.employeeNumber = usa_company_cars.PrimaryDriverID;
+Left JOIN usa_company_cars ON employees.employeeNumber = usa_company_cars.PrimaryDriverID;
 
 #Right Join
 SELECT * FROM employees

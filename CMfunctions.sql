@@ -10,7 +10,7 @@ Select firstName, LOCATE("an",firstName) from employees;
 SELECT firstName, SUBSTR( firstName,3) FROM employees;
 SELECT firstName, INSTR( firstName, 'a' )  FROM employees ; 
 SELECT firstName, SUBSTR( firstName,INSTR( firstName, 'a' )) FROM employees;
-SELECT 10100, Cast(10100 as Char(7));
+SELECT 10100, Cast(10100 as Char(5));
 
 #Numeric Functions
 Select MSRP, CEILING(MSRP) from products;
@@ -55,15 +55,15 @@ DETERMINISTIC
 BEGIN
     DECLARE customerLevel VARCHAR(20);
 
-    IF credit > 50000 THEN
+    IF credit > 100000 THEN
 		SET customerLevel = 'PLATINUM';
-    ELSEIF (credit <= 50000 AND 
-			credit >= 10000) THEN
+    ELSEIF (credit <= 100000 AND 
+			credit >= 50000) THEN
         SET customerLevel = 'GOLD';
-    ELSEIF (credit <10000 AND 
+    ELSEIF (credit <50000 AND 
 			credit > 0) THEN
         SET customerLevel = 'SILVER';
-        ELSE
+	ELSE
         SET customerLevel = 'BRONZE';
     END IF;
 	-- return the customer level

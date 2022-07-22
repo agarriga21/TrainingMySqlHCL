@@ -14,20 +14,22 @@ MODIFY COLUMN VehicleType varchar(60);
 Select * From usa_company_cars;
 
 
-#Update
+#Update (edit preferences to turn safe mode off)
 Select * FROM employees;
 
 UPDATE usa_company_cars SET PrimaryDriverID = 1102 WHERE CarID =10;
 
 #Updates for altered column
 Select * FROM usa_company_cars;
-UPDATE usa_company_cars SET VehicleType = "Truck" WHERE (Make = "Ford" or Make ="GMC") and Model <> "Crown Victoria";
+UPDATE usa_company_cars SET VehicleType = "Truck" WHERE (Make = "Ford" or Make ="GMC") and Model <> ("Crown Victoria");
 UPDATE usa_company_cars SET VehicleType = "Sedan" WHERE FuelType IN ("Hybrid","Electric") or Model IN ("Civic","Crown Victoria");
 UPDATE usa_company_cars SET VehicleType = "Compact" WHERE Model ="Spark";
 
 UPDATE usa_company_cars SET VehicleType = "Van" 
 WHERE PrimaryDriverID = 
 (Select employeeNumber from employees Where firstName="Julie" and lastName = "Firrelli");
+
+Select * From usa_company_cars where VehicleType <> "Truck";
 
 #Alter drop
 ALTER TABLE usa_company_cars
