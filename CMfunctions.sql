@@ -10,12 +10,12 @@ Select firstName, LOCATE("an",firstName) from employees;
 SELECT firstName, SUBSTR( firstName,3) FROM employees;
 SELECT firstName, INSTR( firstName, 'a' )  FROM employees ; 
 SELECT firstName, SUBSTR( firstName,INSTR( firstName, 'a' )) FROM employees;
-SELECT 10100, Cast(10100 as Char(5));
+SELECT Cost, Cast(Cost as Char(10)) from usa_company_cars;
 
 #Numeric Functions
 Select MSRP, CEILING(MSRP) from products;
 Select MSRP, FLOOR(MSRP) from products;
-SELECT MSRP, ROUND(MSRP, -2) FROM products ;
+SELECT MSRP, ROUND(MSRP,-1) FROM products ;
 Select SUM(MSRP), SQRT(SUM(MSRP)) as "Square Root of the MSRP Sum" from products;
 Select MSRP, RAND() as "Random Decimal" from products;
 Select MSRP, concat("$",format(CEILING(RAND()*300),2)) as "Random Price" from products; 
@@ -34,6 +34,7 @@ Select DatePurchased,CURRENT_DATE(),TIMESTAMPDIFF(YEAR, DatePurchased, CURDATE()
 
 #Advanced Functions
 SELECT customerName, creditLimit, IF(creditLimit<=0, "No", "Yes") as "Credit Available" from customers;
+
 SELECT customerName, creditLimit,
 CASE
     WHEN creditLimit >= 100000 THEN "They have a high credit limit"

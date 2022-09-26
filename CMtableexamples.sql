@@ -29,7 +29,7 @@ VALUES (7567,"Worker", "Remote" ,"x3643", "remotework@gmail.com",0,1143,"Sales R
 DROP TABLE IF EXISTS usa_company_cars;
 CREATE TABLE usa_company_cars (
     CarID int AUTO_INCREMENT,
-    AssignedOfficeID int DEFAULT 0,
+    AssignedOfficeID varchar(10) DEFAULT 0,
     PrimaryDriverID int DEFAULT 0,
     ModelYear int NOT NULL,
     Make varchar(255) NOT NULL,

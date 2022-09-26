@@ -6,7 +6,7 @@ Left JOIN usa_company_cars ON employees.employeeNumber = usa_company_cars.Primar
 
 #Right Join
 SELECT * FROM employees
-RIGHT JOIN usa_company_cars ON employees.employeeNumber = usa_company_cars.PrimaryDriverID;
+JOIN usa_company_cars ON employees.employeeNumber = usa_company_cars.PrimaryDriverID;
 
 #Full Join
 SELECT * FROM employees
@@ -29,10 +29,19 @@ FROM employees A, employees B
 WHERE A.reportsTo = B.employeeNumber
 ORDER BY A.officeCode;
 
+
 #Double Inner Join
 Select concat(e.firstName , ' ' , e.lastName) as 'Employee Name' , customerName,
-sum(amount) as "Total Amount Payed by Customer" from employees e
+sum(amount) as "Total Amount Payed Revenue" from employees e
 Inner Join customers c on e.employeeNumber = c.salesRepEmployeeNumber
 Inner Join payments using (customerNumber)
 group by c.customerName
+order by e.employeeNumber;
+
+#Double Inner Join without customer
+Select concat(e.firstName , ' ' , e.lastName) as "Full name",
+sum(amount) as "Total Amount Payed Revenue" from employees e
+Inner Join customers c on e.employeeNumber = c.salesRepEmployeeNumber
+Inner Join payments using (customerNumber)
+group by e.employeeNumber
 order by e.employeeNumber;
