@@ -24,6 +24,7 @@ INSERT IGNORE INTO employees (employeeNumber,lastName,firstName,extension,email,
 VALUES (7567,"Worker", "Remote" ,"x3643", "remotework@gmail.com",0,1143,"Sales Rep"),
 (7568,"Jenkins", "Ralph" ,"x3633", "Theralphster@gmail.com",0,1143,"Sales Rep");
 
+#Easys ----------------------------------------------------------------------------------
 #Select the newly added St. Paul office with officecode, phone number, and city
 Select officeCode, phone, city from offices where officeCode = 9;
 
@@ -47,6 +48,35 @@ Select city, officeCode  from offices
 Left Join employees using (officeCode)
 group by officeCode, employeeNumber having count(employeeNumber) = 0;
 
+#Use group by and aggregate functions to show the count of offices in each country. Sort by count of offices greatest to least
+Select country, count(officeCode) from offices group by country
+order by count(officeCode) desc;
+
+#Show the top 5 paying customerNumber's by their average payment amount. Sort by averages from greatest to least.
+Select customerNumber, avg(amount) from payments group by customerNumber
+order by avg(amount) desc;
+
+#Insert a new employee into the employees table with info of your choice and then select the employee in a query
+Insert into employees (employeeNumber, lastName, firstName, extension, email, officeCode, reportsTo, jobTitle)
+values (7777, "Garcia", "Jose", "x7777", "JGarcia@gmail.com", 1, 1002, "VP General") ;
+
+Select * from employees where employeeNumber = 7777;
+
+#Use regex/like query to retrieve The customers that start with A and order by alphabetical order
+Select * from customers WHERE customerName LIKE 'A%' order by customerName;
+
+#Create a simple table "bankbalance" with a primary key ID and a balance with decimal data type with two decimals with not null constraint. Query table to check after.
+CREATE TABLE bankbalance (
+    ID int,
+    balance decimal(20,2) not null,
+	Primary KEY (ID)
+);
+
+Select * from bankbalance;
+
+
+
+#Mediums -----------------------------------------------------------------------------------
 #Employees with remote office and offices with no employees
 Select concat(firstName, ' ', lastName) as 'Full Name', city,officeCode from employees
 Left Join offices using (officeCode)
@@ -101,6 +131,10 @@ count(checkNumber) as '# of payments' from customers
 left join payments using (customerNumber)
 group by customerNumber having count(checkNumber) = 0
 order by country, city asc;
+
+
+
+#Difficults ----------------------------------------------------------------------------------------------------------------------
 
 #Number of products ordered and their order status, include columns product, total ordered, and status. Hint: use a double groupby
 Select productName as "Product",
