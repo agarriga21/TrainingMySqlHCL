@@ -32,8 +32,8 @@ AND (FuelType IN ("Diesel","Hybrid","Electric") OR Cost<21000);
 #Sorting Examples
 Select * from payments order by amount;
 Select * from payments order by amount desc;
-Select * from employees order by lastName limit 3;
-Select * from employees order by lastName desc limit 3;
+Select * from employees order by lastName limit 5;
+Select * from employees order by lastName desc limit 5;
 
 Select CONCAT_WS(" ",ModelYear,Make,Model) as "Vehicle",PrimaryDriverID,FuelType, Cost 
 from usa_company_cars 

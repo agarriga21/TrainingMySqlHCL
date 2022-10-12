@@ -7,9 +7,8 @@ select * from customers;
 select * from orders;
 select * from orderdetails;
 select * from payments;
-select * from productlines;
 select * from products;
-
+select * from productlines;
 #Data needed in classicmodels for later examples
 INSERT IGNORE INTO offices (officeCode,phone,addressLine1,addressLine2,state,postalCode,territory,city,country)
 VALUES (0,"N/A","N/A","N/A","N/A","N/A","N/A", "Remote" ,"USA");
@@ -50,6 +49,7 @@ Select * From usa_company_cars;
 #Insert usa_company_cars all columns Data - rerun after drop or delete
 INSERT INTO usa_company_cars (AssignedOfficeID, PrimaryDriverID, ModelYear, Make, Model, LicensePlate, FuelType, DatePurchased, StateRegistered, Cost)
 VALUES 
+(2, 0, 2013, "Honda", "Accord", "RGB-8438", "Gas", "2013-03-12", "MA", 30000.00),
 (1, 1076, 2008, "Ford","F250","RTW-8888","Diesel", "2012-05-11","CA",40992.88),
 (1, 1056, 2015, "Tesla","Model S","GGF-1193","Electric", "2016-02-08","CA",80052.31),
 (1, 1166, 2007, "Honda","Civic","YHT-6402","Gas", "2008-11-11","CA",20000.99),
@@ -126,7 +126,7 @@ VALUES (0, 0, 2000, "Make",null,"XXX-0000","Gas", "2000-01-01","TX",10000.00);
 
 #Same license plate as Toyota Prius in existing table
 INSERT INTO usa_company_cars (AssignedOfficeID, PrimaryDriverID, ModelYear, Make, Model, LicensePlate, FuelType, DatePurchased, StateRegistered, Cost)
-VALUES (0, 0, 2000, "Make","Model","VDH-4446","Gas", "2000-01-01","TX",10000.00);
+VALUES (0, 0, 2000, 'Make',"Model","VDH-4446","Gas", "2000-01-01","TX",10000.00);
 
 #Check Constraint examples
 

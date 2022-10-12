@@ -117,7 +117,7 @@ order by sum(quantityOrdered*priceEach) desc
 limit 3;
 
 
-#Top 5 customers by purchase (payment) amount include full name and total money spent in correct format
+#Top 5 customers by purchase total (payment) amount include full name and total money spent in correct format
 Select customers.customerNumber, concat(contactFirstName, ' ',contactLastName) as 'Customer Name',
 concat("$", format(sum(amount), 2)) as "Total Spent" from customers
 inner join payments

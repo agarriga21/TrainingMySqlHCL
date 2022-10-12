@@ -9,7 +9,7 @@ Select * From usa_company_cars;
 
 #Alter modify
 ALTER TABLE usa_company_cars
-MODIFY COLUMN VehicleType varchar(60);
+MODIFY COLUMN VehicleType varchar(70);
 
 Select * From usa_company_cars;
 
@@ -19,10 +19,11 @@ Select * FROM employees;
 
 UPDATE usa_company_cars SET PrimaryDriverID = 1102 WHERE CarID =10;
 
+
 #Updates for altered column
 Select * FROM usa_company_cars;
 UPDATE usa_company_cars SET VehicleType = "Truck" WHERE (Make = "Ford" or Make ="GMC") and Model <> ("Crown Victoria");
-UPDATE usa_company_cars SET VehicleType = "Sedan" WHERE FuelType IN ("Hybrid","Electric") or Model IN ("Civic","Crown Victoria");
+UPDATE usa_company_cars SET VehicleType = "Sedan" WHERE FuelType IN ("Hybrid","Electric") or Model IN ("Civic","Crown Victoria","Accord");
 UPDATE usa_company_cars SET VehicleType = "Compact" WHERE Model ="Spark";
 
 UPDATE usa_company_cars SET VehicleType = "Van" 

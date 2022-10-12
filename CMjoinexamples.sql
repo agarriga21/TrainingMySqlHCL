@@ -6,7 +6,7 @@ Left JOIN usa_company_cars ON employees.employeeNumber = usa_company_cars.Primar
 
 #Right Join
 SELECT * FROM employees
-JOIN usa_company_cars ON employees.employeeNumber = usa_company_cars.PrimaryDriverID;
+Right JOIN usa_company_cars ON employees.employeeNumber = usa_company_cars.PrimaryDriverID;
 
 #Full Join
 SELECT * FROM employees
@@ -23,8 +23,8 @@ INNER JOIN usa_company_cars ON employees.employeeNumber = usa_company_cars.Prima
 SELECT * FROM employees CROSS JOIN usa_company_cars;
 
 #Self Join
-SELECT A.firstName AS firstName1, A.employeeNumber AS employeeNumber1, 
-B.firstName AS Manager, B.employeeNumber AS employeeNumber2, A.reportsTo
+SELECT A.firstName AS EmployeeName, A.employeeNumber AS employeeNumber, 
+B.firstName AS Manager, B.employeeNumber AS ManagerNumber, A.reportsTo As ""
 FROM employees A, employees B
 WHERE A.reportsTo = B.employeeNumber
 ORDER BY A.officeCode;
@@ -45,3 +45,5 @@ Inner Join customers c on e.employeeNumber = c.salesRepEmployeeNumber
 Inner Join payments using (customerNumber)
 group by e.employeeNumber
 order by e.employeeNumber;
+
+

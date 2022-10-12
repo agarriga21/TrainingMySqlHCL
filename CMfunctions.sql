@@ -8,7 +8,7 @@ Select firstName, UCASE(firstName) from employees;
 Select firstName, LCASE(firstName) from employees;
 Select firstName, LOCATE("an",firstName) from employees; 
 SELECT firstName, SUBSTR( firstName,3) FROM employees;
-SELECT firstName, INSTR( firstName, 'a' )  FROM employees ; 
+SELECT firstName, INSTR( firstName, 's' )  FROM employees ; 
 SELECT firstName, SUBSTR( firstName,INSTR( firstName, 'a' )) FROM employees;
 SELECT Cost, Cast(Cost as Char(10)) from usa_company_cars;
 
@@ -77,16 +77,13 @@ SHOW FUNCTION STATUS
 WHERE db = 'classicmodels';
 
 #Testing new function
-SELECT 
-    customerName, 
-     creditLimit,
-    CustomerLevel(creditLimit)
+SELECT customerName, creditLimit, CustomerLevel(creditLimit)
 FROM
     customers
 ORDER BY 
     customerName;
     
     SELECT 
-    CustomerLevel(5000);
+    CustomerLevel(-1);
     
     Select cost,CustomerLevel(cost) from usa_company_cars;

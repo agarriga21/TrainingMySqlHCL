@@ -19,6 +19,19 @@ DELIMITER ;
 
 CALL GetCustomers();
 
+Drop PROCEDURE DeleteRandomCar;
+DELIMITER $$
+
+CREATE PROCEDURE DeleteRandomCar()
+BEGIN
+	DELETE FROM usa_company_cars WHERE CarID = CEILING(rand()*13);    
+END$$
+DELIMITER ;
+
+CALL DeleteRandomCar();
+Select * From usa_company_cars;
+
+
 #procedure with cursor
 DELIMITER $$
 CREATE PROCEDURE createEmailList (
